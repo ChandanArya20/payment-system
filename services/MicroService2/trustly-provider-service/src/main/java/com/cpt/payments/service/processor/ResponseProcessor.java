@@ -56,7 +56,7 @@ public class ResponseProcessor {
         throw new DepositResponseException(
                 ErrorCode.TRUSTLY_DEPOSIT_ERROR.getErrorCode(),
                 ErrorCode.TRUSTLY_DEPOSIT_ERROR.getErrorMessage(),
-                HttpStatus.
+                HttpStatus.SERVICE_UNAVAILABLE
         );
     }
 
