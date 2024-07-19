@@ -7,7 +7,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @SpringBootApplication(scanBasePackages = { "com.cpt.payments" })
-public class  TrustlyPaymentProviderApplication {
+public class
+
+TrustlyPaymentProviderApplication {
 
 	public static void main(String[] args) {  
 		SpringApplication.run(TrustlyPaymentProviderApplication.class, args);

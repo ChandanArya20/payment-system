@@ -3,6 +3,7 @@ package com.cpt.payments.service.processor;
 import com.cpt.payments.constants.ErrorCode;
 import com.cpt.payments.dto.PaymentResponseDTO;
 import com.cpt.payments.exception.DepositResponseException;
+import com.cpt.payments.trustly.res.error.ErrorResponse;
 import com.cpt.payments.trustly.res.DepositResponse;
 import com.cpt.payments.trustly.res.ResultData;
 import com.google.gson.Gson;
@@ -20,6 +21,7 @@ public class ResponseProcessor {
     public PaymentResponseDTO processResponse(ResponseEntity<String> apiResponse) {
 
         if (apiResponse == null) {
+            System.out.println("APi response from trustly is null");
             throw new DepositResponseException(
                     ErrorCode.FAILED_TO_CONNECT_TRUSTLY.getErrorCode(),
                     ErrorCode.FAILED_TO_CONNECT_TRUSTLY.getErrorMessage(),
@@ -52,11 +54,14 @@ public class ResponseProcessor {
 
         }
 
-        System.out.println("Failed response from trusty");
+        System.out.println("Failed response from trusty | response "+apiResponse.getBody());
+
+        ErrorResponse errorResponse = gson.fromJson(apiResponse.getBody(), ErrorResponse.class);
+
         throw new DepositResponseException(
                 ErrorCode.TRUSTLY_DEPOSIT_ERROR.getErrorCode(),
-                ErrorCode.TRUSTLY_DEPOSIT_ERROR.getErrorMessage(),
-                HttpStatus.SERVICE_UNAVAILABLE
+                errorResponse.getError().getMessage(),
+                apiResponse.getStatusCode()
         );
     }
 

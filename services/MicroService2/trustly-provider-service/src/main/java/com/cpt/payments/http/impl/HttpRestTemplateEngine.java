@@ -41,6 +41,7 @@ public class HttpRestTemplateEngine implements HttpServiceEngine {
 
 		} catch (HttpClientErrorException | HttpServerErrorException e) {
 			System.out.println("Got 4xx or 5xx status code , returning exception e "+e);
+			System.out.println("Response body :"+e.getResponseBodyAsString());
 			return createCustomErrorResponse(e.getStatusCode(), e.getResponseBodyAsString(), e.getResponseHeaders());
 
 		} catch (ResourceAccessException e) {
@@ -57,6 +58,8 @@ public class HttpRestTemplateEngine implements HttpServiceEngine {
 			headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 		}
+
+		System.out.println("HttpRestTemplateEngine.createCustomErrorResponse | response body :"+resBody);
 
 		return new ResponseEntity<>(resBody, headers, statusCode);
 	}
