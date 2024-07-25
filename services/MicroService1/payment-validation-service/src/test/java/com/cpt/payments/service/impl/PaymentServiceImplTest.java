@@ -3,7 +3,6 @@ package com.cpt.payments.service.impl;
 import com.cpt.payments.DTO.PaymentRequestDTO;
 import com.cpt.payments.DTO.PaymentResponseDTO;
 import com.cpt.payments.service.Validator;
-import com.cpt.payments.service.impl.validators.ValidationCheck1;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

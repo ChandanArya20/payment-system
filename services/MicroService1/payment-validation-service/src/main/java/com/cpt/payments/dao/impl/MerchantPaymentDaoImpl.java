@@ -8,6 +8,7 @@ import com.cpt.payments.constant.PaymentAttemptThreshold;
 import com.cpt.payments.dao.MerchantPaymentDao;
 import com.cpt.payments.dao.UserDao;
 import com.cpt.payments.exception.ValidationException;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
@@ -21,12 +22,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
+@AllArgsConstructor
 public class MerchantPaymentDaoImpl implements MerchantPaymentDao {
 
-    @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
-
-    @Autowired
     private UserDao userDao;
 
     @Override

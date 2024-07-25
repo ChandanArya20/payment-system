@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequestWrapper;
 
 public class WrappedRequest extends HttpServletRequestWrapper {
 
-    private byte[] buffer;
+    private final byte[] buffer;
 
     public WrappedRequest(HttpServletRequest req) throws IOException {
         super(req);
@@ -47,7 +47,7 @@ public class WrappedRequest extends HttpServletRequestWrapper {
     }
 
     private static final class BufferedServletInputStream extends ServletInputStream {
-        private ByteArrayInputStream bais;
+        private final ByteArrayInputStream bais;
 
         BufferedServletInputStream(ByteArrayInputStream bais) {
             this.bais = bais;
