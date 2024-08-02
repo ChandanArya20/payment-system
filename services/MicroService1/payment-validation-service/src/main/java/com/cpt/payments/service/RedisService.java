@@ -58,4 +58,11 @@ public class RedisService {
             }
         }
     }
+
+    public List<String> getValidationRulesFromCache() {
+        return redisTemplate.opsForList().range("validationRules", 0, -1).stream()
+                .map(validationRuleName->(String)validationRuleName).toList();
+    }
 }
+
+

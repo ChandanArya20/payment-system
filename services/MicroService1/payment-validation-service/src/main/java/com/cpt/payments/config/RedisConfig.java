@@ -18,11 +18,11 @@ public class RedisConfig {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(connectionFactory);
 
-        // Use String serializer for keys
-//        redisTemplate.setKeySerializer(new StringRedisSerializer());
+//         Use String serializer for keys
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
 
-        // Use JSON serializer for values
-//        redisTemplate.setValueSerializer(new StringRedisSerializer());
+//         Use String serializer for values
+        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
 
         return redisTemplate;
     }
